@@ -1,0 +1,66 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href='css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Aladin" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body,
+    p,
+    ul li {
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <?php
+  $active = 'why';
+  include('head.php');
+  ?>
+
+  <div id="page-container" style="margin-top:50px; position: relative;min-height: 84vh;">
+    <div class="container">
+      <div id="content-wrap" style="padding-bottom:50px;">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-6">
+            <img class="img-fluid rounded" src="image\Blood_use.jpg" style="height:600px; width:500px" alt="error">
+          </div>
+          <div class="col-lg-6">
+            <h1 class="mb-4 text-center text-danger">Why Should I Donate Blood ? </h1>
+            <p>
+              <?php
+              include 'conn.php';
+              $sql = $sql = "select * from pages where page_type='donor'";
+              $result = mysqli_query($conn, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  echo $row['page_data'];
+                }
+              }
+              ?>
+            </p>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <?php include('footer.php')
+    ?>
+  </div>
+</body>
+
+</html>
